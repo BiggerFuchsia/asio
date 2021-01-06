@@ -1,0 +1,20 @@
+import("//build/package.gni")
+import("//src/sys/build/components.gni")
+
+config("config") {
+  cflags = [ "-Wno-missing-field-initializers" ]
+  cflags += [ "-Wno-conversion" ]
+
+  include_dirs = [
+    "./asio/include",
+  ]
+
+  defines = [
+    "__FUCHSIA__",
+    "ASIO_HAS_PTHREADS",
+  ]
+}
+
+group("asio") {
+  public_configs = [ ":config" ]
+}

@@ -1823,6 +1823,7 @@
 #endif // !defined(ASIO_NODISCARD)
 
 // Kernel support for MSG_NOSIGNAL.
+#if !defined(__FUCHSIA__)
 #if !defined(ASIO_HAS_MSG_NOSIGNAL)
 # if defined(__linux__)
 #  define ASIO_HAS_MSG_NOSIGNAL 1
@@ -1832,6 +1833,7 @@
 #  endif // _POSIX_VERSION >= 200809L
 # endif // defined(_POSIX_VERSION)
 #endif // !defined(ASIO_HAS_MSG_NOSIGNAL)
+#endif
 
 // Standard library support for std::hash.
 #if !defined(ASIO_HAS_STD_HASH)
