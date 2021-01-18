@@ -421,7 +421,7 @@ bool set_internal_non_blocking(socket_type s,
   ioctl_arg_type arg = (value ? 1 : 0);
   int result = ::ioctlsocket(s, FIONBIO, &arg);
   get_last_error(ec, result < 0);
-#elif defined(__SYMBIAN32__) || defined(__EMSCRIPTEN__)
+#elif defined(__SYMBIAN32__) || defined(__EMSCRIPTEN__) || defined(__FUCHSIA__)
   int result = ::fcntl(s, F_GETFL, 0);
   get_last_error(ec, result < 0);
   if (result >= 0)
